@@ -53,6 +53,9 @@ public class LanguageServiceImpl implements LanguageService {
         if (checkLanguageName(languageToUpdate)) {
             throw new RuntimeException("You have to add a name.");
         }
+        if (findByID(id) == null) {
+            throw new RuntimeException("There is no such a language");
+        }
         languageRepository.update(id, languageToUpdate);
     }
 
